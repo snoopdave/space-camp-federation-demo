@@ -10,8 +10,6 @@ ehthumbs.db
 /env*.sh
 /space-camp-chart/values.yaml
 /space-camp-chart/values-prod.yaml
-values.yaml
-values-prod.yaml
 env.sh
 .idea
 package
