@@ -1,11 +1,13 @@
-const { ApolloServer } = require("apollo-server");
-const { ApolloGateway } = require("@apollo/gateway");
-const { bootstrap: bootstrapGlobalAgent } = require('global-agent');
+import { ApolloServer } from 'apollo-server';
+import { ApolloGateway }  from '@apollo/gateway';
+// import pkg from 'global-agent';
+// const { bootstrapGlobalAgent } = pkg;
+import { ApolloServerPluginUsageReporting }  from 'apollo-server-core';
 
 const port = 4000;
 
 const gateway = new ApolloGateway();
-bootstrapGlobalAgent();
+//bootstrapGlobalAgent();
 
 const server = new ApolloServer({
   gateway,
@@ -14,11 +16,11 @@ const server = new ApolloServer({
     origin: process.env.APOLLO_STUDIO_URL,
     credentials: true,
   },
-  plugins: [
-    ApolloServerPluginSchemaReporting({
-      endpointUrl: process.env.APOLLO_REGISTRY_URL
-    }),
-  ],
+  // plugins: [
+  //   ApolloServerPluginUsageReporting({
+  //     endpointUrl: process.env.APOLLO_USAGE_REPORTING_URL,
+  //   }),
+  // ],
 });
 
 server.listen({ port }).then(({ url }) => {
