@@ -11,6 +11,10 @@ on:
     branches:
       - '**'
 
+# TODO: Instead of having one build job we should have two jobs
+# 'check' runs on pull requests and runs schema checks asynchronously
+# 'publish' runs on pushes to main and publishes schemas
+
 jobs:
   build:
     runs-on: ubuntu-latest
